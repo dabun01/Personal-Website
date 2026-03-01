@@ -1,4 +1,35 @@
 ---
+import '../styles/global.css';
+
+const pageTitle = "About Me";
+
+const identity = {
+    firstname: "David",
+    lastname: "Abundis",
+    occupation: "IT Help Desk Student Worker",
+    location: "San Antonio, Texas",
+    hobbies: ["Web Development", "Design", "Basketball"],
+    favoriteTeams: ["San Antonio Spurs", "Dallas Cowboys"]
+};
+
+const skills = [
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "Astro",
+    "React",
+    "Node.js",
+    "Figma",
+    "Adobe Creative Suite"
+];
+
+const happy = true;
+const finished = true;
+const goal = 3;
+
+const skillColor = "crimson";
+const fontSize = "1.5rem";
+const fontWeight = "bold";
 
 ---
 
@@ -9,17 +40,48 @@
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+        <style define:vars={{skillColor, fontSize, fontWeight}}>
+        h1 {
+            color: purple;
+            font-size: 4rem;
+        }
+
+        .skill {
+            color: var(--skillColor);
+            font-size: var(--fontSize);
+            font-weight: var(--fontWeight);
+        }
+        </style>
+		<title>{pageTitle}</title>
 	</head>
 	<body>
         <a href="/">Home</a>
         <a href="/about/">About</a>
         <a href="/blog/">Blog</a>
-		<h1>About Me</h1>
+		<h1>{pageTitle}</h1>
         
         <p>Favorites Team: San Antonio Spurs, Dallas Cowboys</p>
 
         <p>I'm a developer and designer who also loves to watch and play basketball.</p>
+
+        <p>Here are a few facts about me</p>
+        <ul>
+            <li> My name is {identity.firstname} {identity.lastname}.</li>
+            <li> I live at {identity.location} and I work as {identity.occupation}</li>
+            {identity.hobbies.length >= 2 &&
+            <li> 2 of my hobbies are {identity.hobbies[0]} and {identity.hobbies[1]}</li>
+            }
+        </ul>
+        <h2>Skills</h2>
+        <ul>
+            {skills.map(skill => <li class="skill">{skill}</li>)}
+        </ul>
+        
+        {happy && <p>I am happy to be learning Astro!</p>}
+
+        {finished && <p>I finished this tutorial!</p>}
+
+        {goal === 3 ? <p>My goal is to finish in 3 days.</p> : <p>My goal is not 3 days.</p>}
 
 	</body>
 </html>
