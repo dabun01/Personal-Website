@@ -1,7 +1,6 @@
 ---
 import '../styles/global.css';
-import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
 
 const pageTitle = "About Me";
 
@@ -35,30 +34,7 @@ const fontWeight = "bold";
 
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-        <style define:vars={{skillColor, fontSize, fontWeight}}>
-        h1 {
-            color: purple;
-            font-size: 4rem;
-        }
-
-        .skill {
-            color: var(--skillColor);
-            font-size: var(--fontSize);
-            font-weight: var(--fontWeight);
-        }
-        </style>
-		<title>{pageTitle}</title>
-	</head>
-	<body>
-        <Header />
-		<h1>{pageTitle}</h1>
+<BaseLayout pageTitle={pageTitle}>
         
         <p>Favorites Team: San Antonio Spurs, Dallas Cowboys</p>
 
@@ -82,10 +58,18 @@ const fontWeight = "bold";
         {finished && <p>I finished this tutorial!</p>}
 
         {goal === 3 ? <p>My goal is to finish in 3 days.</p> : <p>My goal is not 3 days.</p>}
+
+        <style is:global define:vars={{skillColor, fontSize, fontWeight}}>
+        h1 {
+            color: purple;
+            font-size: 4rem;
+        }
+
+        .skill {
+            color: var(--skillColor);
+            font-size: var(--fontSize);
+            font-weight: var(--fontWeight);
+        }
+        </style>
         
-        <Footer />
-        <script>
-		import "../scripts/menu.js";
-	    </script>
-	</body>
-</html>
+</BaseLayout>
