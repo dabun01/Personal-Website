@@ -1,6 +1,6 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
-title: My Fourth Blog Post
+title: My 5th Blog Post
 author: David Abundis
 description: "This post will show up on its own!"
 image:
@@ -10,3 +10,5 @@ pubDate: 2026-03-23
 tags: ["astro", "successes", "basketball"]
 ---
 This post should show up with my other blog posts, because `import.meta.glob()` is returning a list of all my posts in order to create my list.
+
+Hi this post has the tag basketball
