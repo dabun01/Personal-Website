@@ -4,10 +4,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Greeting from '../components/Greeting';
 
 
-const pageTitle = "Home Page";
+const pageTitle = "My Projects";
 ---
 <BaseLayout pageTitle={pageTitle}>
-	<p>Welcome to the home page!</p>
+	<p>Welcome to the projects page!</p>
 	<p>This is a simple paragraph.</p>
 	<Greeting client:load messages={["Hej", "Hallo", "Hola", "Habari"]} />
 </BaseLayout>

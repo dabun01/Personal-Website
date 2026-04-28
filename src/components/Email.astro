@@ -1,0 +1,6 @@
+---
+const { username, domain, iconUrl } = Astro.props;
+---
+<a class="social-link" href={`mailto:${username}@${domain}`}>
+  {iconUrl && <img src={iconUrl} alt={"email"} />}
+</a>

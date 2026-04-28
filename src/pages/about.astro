@@ -1,75 +1,73 @@
 ---
-import '../styles/global.css';
-import BaseLayout from '../layouts/BaseLayout.astro';
+import "../styles/global.css";
+import BaseLayout from "../layouts/BaseLayout.astro";
 
 const pageTitle = "About Me";
 
 const identity = {
-    firstname: "David",
-    lastname: "Abundis",
-    occupation: "IT Help Desk Student Worker",
-    location: "San Antonio, Texas",
-    hobbies: ["Web Development", "Design", "Basketball"],
-    favoriteTeams: ["San Antonio Spurs", "Dallas Cowboys"]
+  firstname: "David",
+  lastname: "Abundis",
+  occupation: "IT Help Desk Student Worker",
+  location: "San Antonio, Texas",
+  hobbies: ["Web Development", "Design", "Basketball"],
+  favoriteTeams: ["San Antonio Spurs", "Dallas Cowboys"],
 };
 
 const skills = [
-    "HTML",
-    "CSS",
-    "JavaScript",
-    "Astro",
-    "React",
-    "Node.js",
-    "Figma",
-    "Adobe Creative Suite"
+  "HTML",
+  "CSS",
+  "Java",
+  "JavaScript",
+  "Astro",
+  "React",
+  "Node.js",
+  "Figma",
 ];
-
-const happy = true;
-const finished = true;
-const goal = 3;
-
-const skillColor = "crimson";
-const fontSize = "1.5rem";
-const fontWeight = "bold";
-
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-        
-        <p>Favorites Team: San Antonio Spurs, Dallas Cowboys</p>
+  <p>
+    Hi, I’m David Abundis a senior at Texas A&M University–San Antonio studying
+    Computer Science with a focus on cybersecurity. As a first-generation
+    college student, I’m driven by a passion for using technology to create
+    meaningful, real-world impact. I’ve been able to sharpen my skills through
+    hackathons, CTF competitions, and hands-on projects, constantly pushing
+    myself to learn and adapt in the ever-evolving tech landscape.
+  </p>
 
-        <p>I'm a developer and designer who also loves to watch and play basketball.</p>
+  <p>
+    Beyond code, I’m a huge basketball fan (Go Spurs Go), and I love building
+    fun, engaging tools for both casual and diehard fans. Whether it’s
+    cybersecurity, software development, or creative tech projects, I’m always
+    exploring new ways to turn ideas into something impactful and exciting.
+  </p>
 
-        <p>Here are a few facts about me</p>
-        <ul>
-            <li> My name is {identity.firstname} {identity.lastname}.</li>
-            <li> I live at {identity.location} and I work as {identity.occupation}</li>
-            {identity.hobbies.length >= 2 &&
-            <li> 2 of my hobbies are {identity.hobbies[0]} and {identity.hobbies[1]}</li>
-            }
-        </ul>
-        <h2>Skills</h2>
-        <ul>
-            {skills.map(skill => <li class="skill">{skill}</li>)}
-        </ul>
-        
-        {happy && <p>I am happy to be learning Astro!</p>}
+  <h2>Skills</h2>
+  <ul>
+    {skills.map((skill) => <li class="skill">{skill}</li>)}
+  </ul>
 
-        {finished && <p>I finished this tutorial!</p>}
+  <style is:global>
+    h1 {
+      color: #6043b0;
+      font-size: 3rem;
+    }
 
-        {goal === 3 ? <p>My goal is to finish in 3 days.</p> : <p>My goal is not 3 days.</p>}
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0.5rem 0;
+    }
 
-        <style is:global define:vars={{skillColor, fontSize, fontWeight}}>
-        h1 {
-            color: purple;
-            font-size: 4rem;
-        }
-
-        .skill {
-            color: var(--skillColor);
-            font-size: var(--fontSize);
-            font-weight: var(--fontWeight);
-        }
-        </style>
-        
+    .skill {
+      display: inline-block;
+      background-color: green;
+      color: white;
+      padding: 0.5rem 1rem;
+      margin: 0.25rem;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+  </style>
 </BaseLayout>
