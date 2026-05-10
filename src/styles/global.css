@@ -1,14 +1,27 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+
 html {
   background-color: #f1f5f9;
   font-family: sans-serif;
 }
 
+p {
+  color: black;
+}
+
 body {
-  margin: 0 auto;
+  margin: 0;
   width: 100%;
-  max-width: 80ch;
-  padding: 1rem;
+  padding: 0;
   line-height: 1.5;
+}
+
+main {
+  max-width: 150ch;
+  margin: 0 auto;
+  padding: 1rem;
 }
 
 * {
@@ -18,11 +31,18 @@ body {
 h1 {
   margin: 1rem 0;
   font-size: 2.5rem;
+  color: black;
+}
+
+.tagged-posts {
+  list-style: none;
+  padding: 0;
+  color: blue;
 }
 
 /* nav styles */
 
-.menu {
+.menu-button {
   background-color: #0d0950;
   border: none;
   color: #fff;
@@ -31,7 +51,7 @@ h1 {
   padding: 5px 10px;
 }
 
-:has(.menu[aria-expanded="true"]) .nav-links {
+:has(.menu-button[aria-expanded="true"]) .nav-links {
   display: unset;
 }
 
@@ -73,7 +93,7 @@ h1 {
     padding: 15px 20px;
   }
 
-  .menu {
+  .menu-button {
     display: none;
   }
 }

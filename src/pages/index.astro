@@ -2,12 +2,19 @@
 
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Greeting from '../components/Greeting';
-
+import ProjectCard from '../components/ProjectCard.astro';
+import projectInfo from "../projectInfo.json";
 
 const pageTitle = "My Projects";
+
 ---
 <BaseLayout pageTitle={pageTitle}>
 	<p>Welcome to the projects page!</p>
-	<p>This is a simple paragraph.</p>
-	<Greeting client:load messages={["Hej", "Hallo", "Hola", "Habari"]} />
+	
+	<div class="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+	{projectInfo.map((project) => (
+		<ProjectCard {...project} />
+	))}
+	</div>
+	</BaseLayout>
 </BaseLayout>

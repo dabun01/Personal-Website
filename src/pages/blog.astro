@@ -1,16 +1,18 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import BlogPost from '../components/BlogPost.astro';
+import "../styles/global.css";
+
 const allPosts = Object.values(import.meta.glob('./posts/*.md', { eager: true }));
 const pageTitle = "Blog";
+
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-	<h2>My Thoughts on Web Development, Design, and Basketball</h2>
     <p>Welcome to my blog! Here, I'll share my thoughts on web development, design, and basketball.</p>
 
-    <h3>Recent Posts</h3>
-        <ul>
+    <h3 class="text-black">Recent Posts</h3>
+        <ul class="tagged-posts">
             {allPosts.map((post: any) => <BlogPost title={post.frontmatter.title} url={post.url} />)}
         </ul>
 </BaseLayout>

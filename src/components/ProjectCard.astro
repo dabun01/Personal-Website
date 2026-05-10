@@ -1,0 +1,24 @@
+---
+import "../styles/global.css";
+
+const {title, description, image, tags, category} = Astro.props;
+
+---
+
+<div class="card-xs bg-white w-full shadow-xl">
+  <figure>
+    <img src={image} class="w-full object-cover h-48" alt={title} />
+  </figure>
+  <div class="card-body">
+    <h2 class="card-title text-black">
+      {title}
+      <div class="badge badge-primary">{category}</div>
+    </h2>
+    <p>{description}</p>
+    <div class="card-actions justify-start">
+      {tags.map((tag: unknown) => (
+        <div class="badge badge-outline text-black">{tag}</div>
+      ))}
+    </div>
+  </div>
+</div>
