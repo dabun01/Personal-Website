@@ -3,35 +3,23 @@ import Social from "./Social.astro";
 import Email from "./Email.astro";
 ---
 
-<style>
-  footer {
-    display: flex;
-    gap: 1rem;
-    margin-top: 2rem;
-    justify-content: center;
-  }
-  h3 {
-    text-align: center;
-    margin-top: 0.5rem;
-    color: #555;
-  }
-</style>
-
-<footer>
-  
-  <Social
-    platform="github"
-    username="dabun01"
-    iconUrl="https://img.icons8.com/?size=100&id=bVGqATNwfhYq&format=png&color=000000"
-  />
-  <Social 
-    platform="linkedin" 
-    username="in/davidabundis" 
-    iconUrl="https://img.icons8.com/?size=100&id=13930&format=png&color=000000"/>
-  <Email 
-    username="me" 
-    domain="davidabundis.com" 
-    iconUrl="https://img.icons8.com/?size=100&id=8uaNSRthy4ju&format=png&color=000000"
-  />
+<footer class="site-footer" role="contentinfo">
+  <div class="site-footer-links">
+    <Social
+      platform="github"
+      username="dabun01"
+      iconUrl="https://img.icons8.com/?size=100&id=bVGqATNwfhYq&format=png&color=000000"
+    />
+    <Social
+      platform="linkedin"
+      username="in/davidabundis"
+      iconUrl="https://img.icons8.com/?size=100&id=13930&format=png&color=000000"
+    />
+    <Email
+      username="me"
+      domain="davidabundis.com"
+      iconUrl="https://img.icons8.com/?size=100&id=8uaNSRthy4ju&format=png&color=000000"
+    />
+  </div>
+  <p class="site-footer-copy">© 2026 David Abundis</p>
 </footer>
-<h3>© 2026 David Abundis </h3>
