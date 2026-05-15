@@ -3,7 +3,7 @@
     "id": "1",
     "title": "davidabundis.com",
     "description": "This is my personal website where I showcase my projects and skills.",
-    "image": "src/images/website.png",
+    "image": "/project-images/website.png",
     "tags": ["Astro", "Pre-react", "HTML"],
     "category": "WEB"
   },
@@ -12,7 +12,7 @@
     "id": "2",
     "title": "Responsible Roomies",
     "description": "iOS app designed to make shared living easier and more fun! The app helps roommates organize and manage household chores by turning them into a game.",
-    "image": "src/images/Roomies.png",
+    "image": "/project-images/Roomies.png",
     "tags": ["React Native", "JavaScript", "Mobile Development"],
     "category": "MOBILE"
   },
@@ -21,7 +21,7 @@
     "id": "3",
     "title": "BoardMan",
     "description": "a Python GUI that displays NBA player and team data. A user can see the stats of their favorite players and a snapshot of the league standings.",
-    "image": "src/images/BoardMan.png",
+    "image": "/project-images/Boardman.png",
     "tags": ["Python", "SQL", "Tkinter", "PrettyTable"],
     "category": "DATA SCIENCE"
   }
