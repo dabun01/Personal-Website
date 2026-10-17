@@ -3,26 +3,35 @@
     "id": "1",
     "title": "davidabundis.com",
     "description": "This is my personal website where I showcase my projects and skills.",
+    "longDescription": "My personal portfolio site, built with Astro and Preact and styled with Tailwind CSS and daisyUI. It features a projects gallery, a blog with tag-based filtering and an RSS feed, and reusable components for the header, footer, and social links. Content is statically generated for fast load times.",
     "image": "/project-images/website.png",
     "tags": ["Astro", "Pre-react", "HTML"],
-    "category": "WEB"
+    "category": "WEB",
+    "liveUrl": "https://davidabundis.com",
+    "githubUrl": "https://github.com/dabun01/Basketball-Blog"
   },
 
   {
     "id": "2",
     "title": "Responsible Roomies",
     "description": "iOS app designed to make shared living easier and more fun! The app helps roommates organize and manage household chores by turning them into a game.",
+    "longDescription": "Responsible Roomies is an iOS app built with React Native that makes shared living easier and more fun. Roommates can create, assign, and track household chores, and the app turns completing them into a game so everyone stays motivated and accountable.",
     "image": "/project-images/Roomies.png",
     "tags": ["React Native", "JavaScript", "Mobile Development"],
-    "category": "MOBILE"
+    "category": "MOBILE",
+    "liveUrl": "",
+    "githubUrl": ""
   },
 
   {
     "id": "3",
     "title": "BoardMan",
     "description": "a Python GUI that displays NBA player and team data. A user can see the stats of their favorite players and a snapshot of the league standings.",
+    "longDescription": "BoardMan is a Python desktop application built with Tkinter that displays NBA player and team data. Users can look up stats for their favorite players and view a snapshot of the current league standings. Data is stored and queried with SQL and presented in clean tables using PrettyTable.",
     "image": "/project-images/Boardman.png",
     "tags": ["Python", "SQL", "Tkinter", "PrettyTable"],
-    "category": "DATA SCIENCE"
+    "category": "DATA SCIENCE",
+    "liveUrl": "",
+    "githubUrl": ""
   }
 ]

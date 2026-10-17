@@ -1,14 +1,52 @@
 @import "tailwindcss";
-@plugin "daisyui";
+@plugin "daisyui" {
+  themes: false;
+}
+
+/* Site palette: sage green (primary), deep space blue (secondary), black */
+@plugin "daisyui/theme" {
+  name: "portfolio";
+  default: true;
+  prefersdark: false;
+  color-scheme: light;
+  --color-base-100: #ffffff;
+  --color-base-200: #f2f5f0;
+  --color-base-300: #dfe7db;
+  --color-base-content: #020202;
+  --color-primary: #678d58;
+  --color-primary-content: #020202;
+  --color-secondary: #0d324d;
+  --color-secondary-content: #ffffff;
+  --color-accent: #678d58;
+  --color-accent-content: #020202;
+  --color-neutral: #0d324d;
+  --color-neutral-content: #ffffff;
+  --color-info: #0d324d;
+  --color-info-content: #ffffff;
+  --color-success: #678d58;
+  --color-success-content: #020202;
+  --color-warning: #d9a441;
+  --color-warning-content: #020202;
+  --color-error: #c0392b;
+  --color-error-content: #ffffff;
+  --radius-selector: 0.5rem;
+  --radius-field: 0.25rem;
+  --radius-box: 0.5rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
+}
 
 
 html {
-  background-color: #f1f5f9;
+  background-color: var(--color-base-200);
   font-family: sans-serif;
 }
 
 p {
-  color: black;
+  color: var(--color-base-content);
 }
 
 body {
@@ -31,13 +69,13 @@ main {
 h1 {
   margin: 1rem 0;
   font-size: 2.5rem;
-  color: black;
+  color: var(--color-base-content);
 }
 
 .tagged-posts {
   list-style: none;
   padding: 0;
-  color: blue;
+  color: var(--color-secondary);
 }
 
 /* nav styles */
@@ -61,12 +99,12 @@ h1 {
   font-size: 1.2rem;
   font-weight: bold;
   text-transform: uppercase;
-  color: #0d0950;
+  color: var(--color-secondary);
 }
 
 .nav-links a:hover,
 .nav-links a:focus {
-  background-color: #704fcc;
+  background-color: var(--color-secondary);
   color: white;
 }
 
@@ -95,8 +133,8 @@ h1 {
   align-items: center;
   gap: 0.5rem;
   padding: 0.4rem 0.4rem;
-  color: white;
-  background-color: #9e83c6;
+  color: var(--color-primary-content);
+  background-color: var(--color-primary);
   text-decoration: none;
 }
 
@@ -107,32 +145,31 @@ h1 {
 
 .social-link:hover,
 .social-link:focus {
-  background-color: #704fcc;
-  color: white;
+  /* darker sage so the black icons stay visible */
+  background-color: color-mix(in srgb, var(--color-primary) 75%, black);
+  color: var(--color-primary-content);
 }
 
 /* Layout helpers so main fills available space between header and footer */
-html,
-body {
-  height: 100%;
-}
-
 body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  /* 100vw elements include the scrollbar width; prevent sideways scroll */
+  overflow-x: clip;
 }
 
+/* Grow to fill short pages, but never shrink below content height */
 main {
-  flex: 1 1 auto;
-  min-height: 0;
-  /* allow children to size correctly */
+  flex: 1 0 auto;
+  width: 100%;
 }
 
 .site-footer {
   width: 100%;
   margin-top: auto;
   padding: 1.5rem 1rem 1rem;
+  background-color: var(--color-base-300);
   display: flex;
   flex-direction: column;
   align-items: center;

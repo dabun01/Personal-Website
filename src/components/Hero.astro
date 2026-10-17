@@ -1,6 +1,65 @@
-<div class="hero h-full full-bleed">
-  <img src="/project-images/hero.png" alt="Hero image" class="hero-img" />
-  <div class="hero-content text-neutral-content text-center">
-    <div class="max-w-md"></div>
+<div class="monitor-wrap">
+  <div class="monitor">
+    <div class="monitor-screen">
+      <img src="/project-images/hero.png" alt="Hero image" />
+    </div>
+    <div class="monitor-chin"></div>
   </div>
+  <div class="monitor-neck"></div>
+  <div class="monitor-base"></div>
 </div>
+
+<style>
+  .monitor-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 0;
+  }
+
+  /* Bezel around the screen */
+  .monitor {
+    width: min(1000px, 100%);
+    background: #1f2937;
+    border-radius: 1rem;
+    padding: 0.75rem 0.75rem 0;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+  }
+
+  .monitor-screen {
+    aspect-ratio: 16 / 9;
+    background: #000;
+    border-radius: 0.25rem;
+    overflow: hidden;
+  }
+
+  .monitor-screen img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: top;
+    display: block;
+  }
+
+  /* Bottom strip of the bezel */
+  .monitor-chin {
+    height: 1.75rem;
+  }
+
+  .monitor-neck {
+    width: 18%;
+    max-width: 140px;
+    height: 70px;
+    background: linear-gradient(#9ca3af, #6b7280);
+    clip-path: polygon(15% 0, 85% 0, 100% 100%, 0 100%);
+  }
+
+  .monitor-base {
+    width: 35%;
+    max-width: 280px;
+    height: 12px;
+    background: #6b7280;
+    border-radius: 999px 999px 4px 4px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+</style>
