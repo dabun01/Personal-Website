@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@import "@fontsource/pixelify-sans/400.css";
+@import "@fontsource/pixelify-sans/700.css";
 @plugin "daisyui" {
   themes: false;
 }
@@ -39,6 +41,46 @@
   --noise: 0;
 }
 
+
+/* Minecraft-style fonts (not applied yet).
+   Use with Tailwind classes `font-minecraft` / `font-pixel`,
+   or in CSS with var(--font-minecraft) / var(--font-pixel). */
+@font-face {
+  font-family: "Minecraft";
+  src: url("/fonts/Minecraft-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Minecraft";
+  src: url("/fonts/Minecraft-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Minecraft";
+  src: url("/fonts/Minecraft-Italic.otf") format("opentype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Minecraft";
+  src: url("/fonts/Minecraft-BoldItalic.otf") format("opentype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@theme {
+  --font-minecraft: "Minecraft", monospace;
+  --font-pixel: "Pixelify Sans", sans-serif;
+}
 
 html {
   background-color: var(--color-base-200);
@@ -131,23 +173,20 @@ h1 {
 .social-link {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.4rem 0.4rem;
-  color: var(--color-primary-content);
-  background-color: var(--color-primary);
+  padding: 0.4rem;
+  color: var(--color-secondary-content);
   text-decoration: none;
+  transition: color 0.15s;
 }
 
-.social-link img {
-  width: 35px;
-  height: 35px;
+.social-link svg {
+  width: 32px;
+  height: 32px;
 }
 
 .social-link:hover,
 .social-link:focus {
-  /* darker sage so the black icons stay visible */
-  background-color: color-mix(in srgb, var(--color-primary) 75%, black);
-  color: var(--color-primary-content);
+  color: var(--color-primary);
 }
 
 /* Layout helpers so main fills available space between header and footer */
@@ -169,7 +208,8 @@ main {
   width: 100%;
   margin-top: auto;
   padding: 1.5rem 1rem 1rem;
-  background-color: var(--color-base-300);
+  background-color: var(--color-secondary);
+  color: var(--color-secondary-content);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -188,7 +228,8 @@ main {
 
 .site-footer-copy {
   margin: 0;
-  color: #555;
+  /* slightly dimmed white on the blue footer */
+  color: color-mix(in srgb, var(--color-secondary-content) 75%, transparent);
   text-align: center;
 }
 
