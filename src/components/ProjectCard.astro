@@ -4,9 +4,17 @@ import "../styles/global.css";
 const { id, title, description, image, tags, category } = Astro.props;
 ---
 
-<a
-  href={`/projects/${id}/`}
-  class="card-xs bg-white w-full shadow-xl overflow-hidden block transition hover:-translate-y-1 hover:shadow-2xl"
+<!--
+  The card is an <article>, not a link, because the tag pills are buttons and
+  a button isn't allowed inside a link. The title link's ::after is stretched
+  over the whole card (after:absolute after:inset-0) so the card is still
+  clickable anywhere; the pills sit above it (relative z-10) to get their own clicks.
+-->
+<article
+  data-project-card
+  data-title={title.toLowerCase()}
+  data-tags={tags.join("|").toLowerCase()}
+  class="card-xs relative bg-white w-full shadow-xl overflow-hidden transition hover:-translate-y-1 hover:shadow-2xl"
 >
   <figure class="h-48 overflow-hidden">
     <img
@@ -17,16 +25,28 @@ const { id, title, description, image, tags, category } = Astro.props;
   </figure>
   <div class="card-body">
     <h2 class="card-title text-2xl text-black">
-      {title}
-      <div class="badge badge-primary badge-sm">{category}</div>
+      <a
+        href={`/projects/${id}/`}
+        class="font-minecraft after:absolute after:inset-0"
+      >
+        {title}
+      </a>
     </h2>
-    <p>{description}</p>
     <div class="card-actions justify-start">
+      <div class="badge badge-primary">{category}</div>
       {
-        tags.map((tag: unknown) => (
-          <div class="badge badge-outline text-black">{tag}</div>
+        tags.map((tag: string) => (
+          <button
+            type="button"
+            data-tag-filter={tag}
+            class="badge relative z-10 cursor-pointer bg-gray-200 border-gray-300 text-black hover:bg-gray-300"
+            title={`Show projects using ${tag}`}
+          >
+            {tag}
+          </button>
         ))
       }
     </div>
+    <p class="text-base">{description}</p>
   </div>
-</a>
+</article>

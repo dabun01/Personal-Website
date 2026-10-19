@@ -5,7 +5,7 @@
     "description": "This is my personal website where I showcase my projects and skills.",
     "longDescription": "My personal portfolio site, built with Astro and Preact and styled with Tailwind CSS and daisyUI. It features a projects gallery, a blog with tag-based filtering and an RSS feed, and reusable components for the header, footer, and social links. Content is statically generated for fast load times.",
     "image": "/project-images/website.png",
-    "tags": ["Astro", "Pre-react", "HTML"],
+    "tags": ["Astro", "Pre-react", "HTML", "CSS", "JavaScript"],
     "category": "WEB",
     "liveUrl": "https://davidabundis.com",
     "githubUrl": "https://github.com/dabun01/Basketball-Blog"
@@ -17,10 +17,10 @@
     "description": "iOS app designed to make shared living easier and more fun! The app helps roommates organize and manage household chores by turning them into a game.",
     "longDescription": "Responsible Roomies is an iOS app built with React Native that makes shared living easier and more fun. Roommates can create, assign, and track household chores, and the app turns completing them into a game so everyone stays motivated and accountable.",
     "image": "/project-images/Roomies.png",
-    "tags": ["React Native", "JavaScript", "Mobile Development"],
+    "tags": ["Swift", "Xcode"],
     "category": "MOBILE",
     "liveUrl": "",
-    "githubUrl": ""
+    "githubUrl": "https://github.com/dabun01/RoommateApp"
   },
 
   {
@@ -32,6 +32,73 @@
     "tags": ["Python", "SQL", "Tkinter", "PrettyTable"],
     "category": "DATA SCIENCE",
     "liveUrl": "",
-    "githubUrl": ""
+    "githubUrl": "https://github.com/dabun01/BoardMan"
+  },
+  {
+    "id": "4",
+    "title": "NBA Expansion GM",
+    "description": "A website where you can simulate being a general manager of an NBA expansion team.",
+    "longDescription": "NBA Expansion GM is a simulation game where you can create and manage your own NBA expansion team. You can protect and draft players. Share your protection list with the community and see what the everyone thinks.",
+    "image": "/project-images/expansion-Draft.png",
+    "tags": ["JavaScript", "React", "MongoDB", "Node.js", "Vercel"],
+    "category": "FULL STACK",
+    "liveUrl": "https://nba-expansion-draft.vercel.app/",
+    "githubUrl": "https://github.com/dabun01/Project4"
+  },
+  {
+    "id": "5",
+    "title": "Budget Bite",
+    "description": "A progressive web app that helps you create budget-friendly meals based on the available ingredient you have in your kitchen.",
+    "longDescription": "Budget Bite is a progressive web app that helps you create budget-friendly meals based on the available ingredient you have in your kitchen. The app allows you to input the ingredients you have and generates recipes that use those ingredients, helping you reduce food waste and save money.",
+    "image": "/project-images/budget-bite-img.png",
+    "tags": ["TypeScript", "Python", "GeminiAPI", "React Native", "Expo"],
+    "category": "MOBILE",
+    "liveUrl": "",
+    "githubUrl": "https://github.com/KevinAdkins/BudgetBite"
+  },
+  {
+    "id": "6",
+    "title": "Pywizard",
+    "description": "A webpage where you can learn how Python executes code and follow it step by step.",
+    "longDescription": "Pywizard is a webpage that helps you learn how Python executes code and follow it step by step. It provides a visual representation of the code execution process, making it easier to understand how Python works under the hood.",
+    "image": "/project-images/pywizard-img.png",
+    "tags": ["Python", "TypeScript", "FastAPI", "GeminiAPI"],
+    "category": "WEB",
+    "liveUrl": "https://pywizard-one.vercel.app/",
+    "githubUrl": "https://github.com/jspinerola/pywizard"
+  },
+  {
+    "id": "7",
+    "title": "DataRat",
+    "description": "A chrome extension that helps you understand the terms and conditions of websites you visit by providing a summary of the key points.",
+    "longDescription": "DataRat is a chrome extension that helps you understand the terms and conditions of websites you visit by providing a summary of the key points. It uses natural language processing to analyze the text and generate a concise summary, making it easier for users to understand their rights and obligations.",
+    "image": "/project-images/data-rat-hero.png",
+    "tags": ["Hackathon", "JavaScript", "HTML", "Chrome Extension", "GeminiAPI"], 
+    "category": "WEB",
+    "liveUrl": "",
+    "githubUrl": "https://github.com/RenSan888/DataRat"
+  },
+  {
+    "id": "8",
+    "title": "Rev-Enue",
+    "description": "A React single‑page app that improves the car‑buying experience by asking users a short series of questions, then recommending vehicles that best match their needs.",
+    "longDescription": "A React single‑page app that improves the car‑buying experience by asking users a short series of questions, then recommending vehicles that best match their needs. The app filters a local JSON dataset and presents paginated, card‑style results.",
+    "image": "/project-images/car-web-hero.png",
+    "tags": ["Hackathon", "JavaScript", "Python", "React"],
+    "category": "DATA SCIENCE",
+    "liveUrl": "",
+    "githubUrl": "https://github.com/dabun01/CarFinance"
+  },
+  {
+    "id": "9",
+    "title": "Pokedex",
+    "description": "Pokedex is an Android app that displays a scrollable list of Pokemon from the PokeAPI",
+    "longDescription": "Pokedex is an Android app that displays a scrollable list of Pokemon from the PokeAPI. Users can view detailed information about each Pokemon, including their name, health, and types. The app is built with Kotlin and Android Studio.",
+    "image": "/project-images/pokemon-app.png",
+    "tags": ["Kotlin", "Android"],
+    "category": "MOBILE",
+    "liveUrl": "",
+    "githubUrl": "https://github.com/dabun01/RandomPokemon"
   }
+
 ]
