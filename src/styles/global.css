@@ -114,12 +114,6 @@ h1 {
   color: var(--color-base-content);
 }
 
-.tagged-posts {
-  list-style: none;
-  padding: 0;
-  color: var(--color-secondary);
-}
-
 /* nav styles */
 
 :has(.menu-button[aria-expanded="true"]) .nav-links {

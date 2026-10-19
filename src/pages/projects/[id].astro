@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import projectInfo from "../../projectInfo.json";
+import { categoryColor } from "../../categoryColors";
 
 export function getStaticPaths() {
   return projectInfo.map((project) => ({
@@ -10,6 +11,9 @@ export function getStaticPaths() {
 }
 
 const { project } = Astro.props;
+
+// Link back to the projects page with this tag pre-filled in the Tag search box.
+const tagLink = (tag: string) => `/?tag=${encodeURIComponent(tag)}`;
 ---
 
 <BaseLayout pageTitle={project.title} hideTitle>
@@ -29,10 +33,22 @@ const { project } = Astro.props;
   <a href="/" class="link link-primary">&larr; Back to projects</a>
 
   <div class="flex flex-wrap items-center gap-2 mt-6">
-    <div class="badge badge-primary">{project.category}</div>
+    <a
+      href={tagLink(project.category)}
+      class={`badge hover:brightness-110 ${categoryColor(project.category)}`}
+      title={`Show ${project.category} projects`}
+    >
+      {project.category}
+    </a>
     {
       project.tags.map((tag) => (
-        <div class="badge badge-outline text-black">{tag}</div>
+        <a
+          href={tagLink(tag)}
+          class="badge bg-gray-200 border-gray-300 text-black hover:bg-gray-300"
+          title={`Show projects using ${tag}`}
+        >
+          {tag}
+        </a>
       ))
     }
   </div>

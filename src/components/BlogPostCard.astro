@@ -1,0 +1,41 @@
+---
+const { url, title, pubDate, description, tags = [] } = Astro.props;
+
+// pubDate comes from the post's frontmatter as a Date; show it as YYYY-MM-DD.
+const date = new Date(pubDate).toISOString().slice(0, 10);
+---
+
+<!--
+  Same "stretched link" setup as ProjectCard: the title link's ::after covers
+  the whole card so it's clickable anywhere, and the tag buttons sit above it
+  (relative z-10) so they get their own clicks.
+-->
+<article
+  data-filter-card
+  data-title={title.toLowerCase()}
+  data-tags={tags.join("|").toLowerCase()}
+  class="relative flex flex-col sm:flex-row sm:items-center gap-4 bg-white rounded-lg shadow-md p-6 transition hover:-translate-y-1 hover:shadow-xl"
+>
+  <div class="flex-1">
+    <h2 class="font-minecraft text-xl text-black">
+      <a href={url} class="after:absolute after:inset-0">{title}</a>
+    </h2>
+    <time datetime={date} class="block text-sm text-secondary mt-1">{date}</time>
+    <p class="mt-2">{description}</p>
+  </div>
+
+  <div class="flex flex-wrap gap-2 sm:justify-end sm:max-w-[40%]">
+    {
+      tags.map((tag: string) => (
+        <button
+          type="button"
+          data-tag-filter={tag}
+          class="badge badge-lg relative z-10 cursor-pointer bg-gray-200 border-gray-300 text-black hover:bg-gray-300"
+          title={`Show posts tagged ${tag}`}
+        >
+          {tag}
+        </button>
+      ))
+    }
+  </div>
+</article>

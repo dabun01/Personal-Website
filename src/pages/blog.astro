@@ -1,18 +1,51 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import BlogPost from '../components/BlogPost.astro';
+import BlogPostCard from '../components/BlogPostCard.astro';
+import SearchFilters from '../components/SearchFilters.astro';
 import "../styles/global.css";
 
 const allPosts = Object.values(import.meta.glob('./posts/*.md', { eager: true }));
 const pageTitle = "Blog";
 
+// Newest posts first
+const sortedPosts = allPosts.sort(
+  (a: any, b: any) =>
+    new Date(b.frontmatter.pubDate).getTime() - new Date(a.frontmatter.pubDate).getTime()
+);
+
+const allTags = [
+  ...new Set(sortedPosts.flatMap((post: any) => post.frontmatter.tags)),
+].sort() as string[];
 ---
 
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout pageTitle={pageTitle} hideTitle>
+    <h1 class="font-minecraft">{pageTitle}</h1>
+
     <p>Welcome to my blog! Here, I'll share my thoughts on web development, design, and basketball.</p>
 
-    <h3 class="text-black">Recent Posts</h3>
-        <ul class="tagged-posts">
-            {allPosts.map((post: any) => <BlogPost title={post.frontmatter.title} url={post.url} />)}
-        </ul>
+    <h3 class="text-black text-2xl mt-8 mb-4">Recent Posts</h3>
+
+    <SearchFilters
+        tags={allTags}
+        namePlaceholder="Search posts by title"
+        tagPlaceholder="Filter by tag (e.g. astro)"
+    />
+
+    <div class="flex flex-col gap-6 mb-8">
+        {
+            sortedPosts.map((post: any) => (
+                <BlogPostCard
+                    url={post.url}
+                    title={post.frontmatter.title}
+                    pubDate={post.frontmatter.pubDate}
+                    description={post.frontmatter.description}
+                    tags={post.frontmatter.tags}
+                />
+            ))
+        }
+    </div>
+
+    <p id="no-results" class="text-center text-lg mb-8" hidden>
+        No posts match your search.
+    </p>
 </BaseLayout>

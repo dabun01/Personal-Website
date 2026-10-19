@@ -1,0 +1,92 @@
+---
+// Name + Tag search boxes that filter cards on the page.
+//
+// To use it, a page needs:
+//  - cards with `data-filter-card`, `data-title="lowercase title"` and
+//    `data-tags="tag1|tag2"` (lowercase, joined with |)
+//  - optional tag buttons with `data-tag-filter="Tag"` (click to filter)
+//  - an element with id="no-results" (shown when nothing matches)
+// It also reads ?tag=... from the URL so other pages can link to a filtered view.
+const { tags, namePlaceholder = "Search by name", tagPlaceholder = "Filter by tag" } =
+  Astro.props;
+---
+
+<div class="flex flex-col sm:flex-row gap-4 mb-8">
+  <label class="input w-full sm:flex-1">
+    <span class="label">Name</span>
+    <input
+      id="name-search"
+      type="search"
+      placeholder={namePlaceholder}
+      autocomplete="off"
+    />
+  </label>
+  <label class="input w-full sm:flex-1">
+    <span class="label">Tag</span>
+    <input
+      id="tag-search"
+      type="search"
+      list="tag-options"
+      placeholder={tagPlaceholder}
+      autocomplete="off"
+    />
+  </label>
+  <datalist id="tag-options">
+    {tags.map((tag: string) => <option value={tag} />)}
+  </datalist>
+</div>
+
+<script>
+  const nameInput = document.getElementById("name-search") as HTMLInputElement;
+  const tagInput = document.getElementById("tag-search") as HTMLInputElement;
+  const noResults = document.getElementById("no-results");
+  const cards = document.querySelectorAll<HTMLElement>("[data-filter-card]");
+  const tagButtons = document.querySelectorAll<HTMLButtonElement>("[data-tag-filter]");
+
+  // Every tag used by any card, so we can tell a full tag name from a partial one.
+  const knownTags = new Set(
+    [...cards].flatMap((card) => card.dataset.tags!.split("|"))
+  );
+
+  function filterCards() {
+    const name = nameInput.value.trim().toLowerCase();
+    const tag = tagInput.value.trim().toLowerCase();
+    let visible = 0;
+
+    cards.forEach((card) => {
+      const matchesName = card.dataset.title!.includes(name);
+      const cardTags = card.dataset.tags!.split("|");
+      // A full tag name (e.g. "java") matches exactly, so it won't also match
+      // "javascript". Anything else is a partial search.
+      const matchesTag =
+        !tag ||
+        (knownTags.has(tag)
+          ? cardTags.includes(tag)
+          : cardTags.some((t) => t.includes(tag)));
+      const show = matchesName && matchesTag;
+      card.hidden = !show;
+      if (show) visible++;
+    });
+
+    if (noResults) noResults.hidden = visible > 0;
+  }
+
+  nameInput.addEventListener("input", filterCards);
+  tagInput.addEventListener("input", filterCards);
+
+  // Coming from another page (e.g. /?tag=Python): pre-fill the Tag box.
+  const tagFromUrl = new URLSearchParams(window.location.search).get("tag");
+  if (tagFromUrl) {
+    tagInput.value = tagFromUrl;
+    filterCards();
+  }
+
+  // Clicking a tag pill puts that tag in the Tag box and re-runs the filter.
+  tagButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      tagInput.value = button.dataset.tagFilter!;
+      filterCards();
+      tagInput.scrollIntoView({ behavior: "smooth", block: "center" });
+    });
+  });
+</script>
