@@ -1,5 +1,41 @@
 [
   {
+    "id": "4",
+    "title": "NBA Expansion GM",
+    "description": "A website where you can simulate being a general manager of an NBA expansion team.",
+    "longDescription": "NBA Expansion GM is a simulation game where you can create and manage your own NBA expansion team. You can protect and draft players. Share your protection list with the community and see what the everyone thinks.",
+    "image": "/project-images/expansion-Draft.png",
+    "tags": ["JavaScript", "React", "MongoDB", "Node.js", "Vercel"],
+    "category": "FULL STACK",
+    "liveUrl": "https://nba-expansion-draft.vercel.app/",
+    "githubUrl": "https://github.com/dabun01/Project4"
+  },
+
+  {
+    "id": "6",
+    "title": "Pywizard",
+    "description": "A webpage where you can learn how Python executes code and follow it step by step.",
+    "longDescription": "Pywizard is a webpage that helps you learn how Python executes code and follow it step by step. It provides a visual representation of the code execution process, making it easier to understand how Python works under the hood.",
+    "image": "/project-images/pywizard-img.png",
+    "tags": ["Python", "TypeScript", "FastAPI", "GeminiAPI"],
+    "category": "WEB",
+    "liveUrl": "https://pywizard-one.vercel.app/",
+    "githubUrl": "https://github.com/jspinerola/pywizard"
+  },
+
+  {
+    "id": "5",
+    "title": "Budget Bite",
+    "description": "A progressive web app that helps you create budget-friendly meals based on the available ingredient you have in your kitchen.",
+    "longDescription": "Budget Bite is a progressive web app that helps you create budget-friendly meals based on the available ingredient you have in your kitchen. The app allows you to input the ingredients you have and generates recipes that use those ingredients, helping you reduce food waste and save money.",
+    "image": "/project-images/budget-bite-img.png",
+    "tags": ["TypeScript", "Python", "GeminiAPI", "React Native", "Expo"],
+    "category": "MOBILE",
+    "liveUrl": "",
+    "githubUrl": "https://github.com/KevinAdkins/BudgetBite"
+  },
+
+  {
     "id": "1",
     "title": "davidabundis.com",
     "description": "This is my personal website where I showcase my projects and skills.",
@@ -24,50 +60,6 @@
   },
 
   {
-    "id": "3",
-    "title": "BoardMan",
-    "description": "a Python GUI that displays NBA player and team data. A user can see the stats of their favorite players and a snapshot of the league standings.",
-    "longDescription": "BoardMan is a Python desktop application built with Tkinter that displays NBA player and team data. Users can look up stats for their favorite players and view a snapshot of the current league standings. Data is stored and queried with SQL and presented in clean tables using PrettyTable.",
-    "image": "/project-images/Boardman.png",
-    "tags": ["Python", "SQL", "Tkinter", "PrettyTable"],
-    "category": "DATA SCIENCE",
-    "liveUrl": "",
-    "githubUrl": "https://github.com/dabun01/BoardMan"
-  },
-  {
-    "id": "4",
-    "title": "NBA Expansion GM",
-    "description": "A website where you can simulate being a general manager of an NBA expansion team.",
-    "longDescription": "NBA Expansion GM is a simulation game where you can create and manage your own NBA expansion team. You can protect and draft players. Share your protection list with the community and see what the everyone thinks.",
-    "image": "/project-images/expansion-Draft.png",
-    "tags": ["JavaScript", "React", "MongoDB", "Node.js", "Vercel"],
-    "category": "FULL STACK",
-    "liveUrl": "https://nba-expansion-draft.vercel.app/",
-    "githubUrl": "https://github.com/dabun01/Project4"
-  },
-  {
-    "id": "5",
-    "title": "Budget Bite",
-    "description": "A progressive web app that helps you create budget-friendly meals based on the available ingredient you have in your kitchen.",
-    "longDescription": "Budget Bite is a progressive web app that helps you create budget-friendly meals based on the available ingredient you have in your kitchen. The app allows you to input the ingredients you have and generates recipes that use those ingredients, helping you reduce food waste and save money.",
-    "image": "/project-images/budget-bite-img.png",
-    "tags": ["TypeScript", "Python", "GeminiAPI", "React Native", "Expo"],
-    "category": "MOBILE",
-    "liveUrl": "",
-    "githubUrl": "https://github.com/KevinAdkins/BudgetBite"
-  },
-  {
-    "id": "6",
-    "title": "Pywizard",
-    "description": "A webpage where you can learn how Python executes code and follow it step by step.",
-    "longDescription": "Pywizard is a webpage that helps you learn how Python executes code and follow it step by step. It provides a visual representation of the code execution process, making it easier to understand how Python works under the hood.",
-    "image": "/project-images/pywizard-img.png",
-    "tags": ["Python", "TypeScript", "FastAPI", "GeminiAPI"],
-    "category": "WEB",
-    "liveUrl": "https://pywizard-one.vercel.app/",
-    "githubUrl": "https://github.com/jspinerola/pywizard"
-  },
-  {
     "id": "7",
     "title": "DataRat",
     "description": "A chrome extension that helps you understand the terms and conditions of websites you visit by providing a summary of the key points.",
@@ -78,6 +70,19 @@
     "liveUrl": "",
     "githubUrl": "https://github.com/RenSan888/DataRat"
   },
+
+  {
+    "id": "3",
+    "title": "BoardMan",
+    "description": "a Python GUI that displays NBA player and team data. A user can see the stats of their favorite players and a snapshot of the league standings.",
+    "longDescription": "BoardMan is a Python desktop application built with Tkinter that displays NBA player and team data. Users can look up stats for their favorite players and view a snapshot of the current league standings. Data is stored and queried with SQL and presented in clean tables using PrettyTable.",
+    "image": "/project-images/Boardman.png",
+    "tags": ["Python", "SQL", "Tkinter", "PrettyTable"],
+    "category": "DESKTOP",
+    "liveUrl": "",
+    "githubUrl": "https://github.com/dabun01/BoardMan"
+  },
+
   {
     "id": "8",
     "title": "Rev-Enue",
@@ -85,10 +90,11 @@
     "longDescription": "A React single‑page app that improves the car‑buying experience by asking users a short series of questions, then recommending vehicles that best match their needs. The app filters a local JSON dataset and presents paginated, card‑style results.",
     "image": "/project-images/car-web-hero.png",
     "tags": ["Hackathon", "JavaScript", "Python", "React"],
-    "category": "DATA SCIENCE",
+    "category": "WEB",
     "liveUrl": "",
     "githubUrl": "https://github.com/dabun01/CarFinance"
   },
+
   {
     "id": "9",
     "title": "Pokedex",
