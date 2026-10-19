@@ -4,6 +4,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 const pageTitle = "About Me";
 
+// Put your photo in public/ (e.g. public/about/me.jpg) and set its path here.
+const photo = "";
+
 const identity = {
   firstname: "David",
   lastname: "Abundis",
@@ -13,60 +16,163 @@ const identity = {
   favoriteTeams: ["San Antonio Spurs", "Dallas Cowboys"],
 };
 
+// Logos come from Devicon: https://devicon.dev
+// TODO: update `years` with your real experience for each skill.
+const iconBase = "https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons";
 const skills = [
-  "HTML",
-  "CSS",
-  "Java",
-  "JavaScript",
-  "Astro",
-  "React",
-  "Node.js",
-  "Figma",
+  { name: "HTML", icon: `${iconBase}/html5/html5-original.svg`, years: 5 },
+  { name: "CSS", icon: `${iconBase}/css3/css3-original.svg`, years: 5 },
+  { name: "Java", icon: `${iconBase}/java/java-original.svg`, years: 4 },
+  { name: "Python", icon: `${iconBase}/python/python-original.svg`, years: 3 },
+  { name: "JavaScript", icon: `${iconBase}/javascript/javascript-original.svg`, years: 2 },
+  { name: "Astro", icon: `${iconBase}/astro/astro-original.svg`, years: 2 },
+  { name: "React", icon: `${iconBase}/react/react-original.svg`, years: 2 },
+  { name: "Node.js", icon: `${iconBase}/nodejs/nodejs-original.svg`, years: 1 },
+  { name: "Figma", icon: `${iconBase}/figma/figma-original.svg`, years: 2 },
+  { name: "Github", icon: `${iconBase}/github/github-original.svg`, years: 4 },
+  { name: "Linux", icon: `${iconBase}/linux/linux-original.svg`, years: 2 },
+  {name: "SQL", icon: `${iconBase}/mysql/mysql-original.svg`, years: 2}
 ];
 ---
 
-<BaseLayout pageTitle={pageTitle}>
-  <p>
-    Hi, I’m David Abundis a senior at Texas A&M University–San Antonio studying
-    Computer Science with a focus on cybersecurity. As a first-generation
-    college student, I’m driven by a passion for using technology to create
-    meaningful, real-world impact. I’ve been able to sharpen my skills through
-    hackathons, CTF competitions, and hands-on projects, constantly pushing
-    myself to learn and adapt in the ever-evolving tech landscape.
-  </p>
+<BaseLayout pageTitle={pageTitle} hideTitle>
+  <h1 class="font-minecraft about-title">{pageTitle}</h1>
 
-  <p>
-    Beyond code, I’m a huge basketball fan (Go Spurs Go), and I love building
-    fun, engaging tools for both casual and diehard fans. Whether it’s
-    cybersecurity, software development, or creative tech projects, I’m always
-    exploring new ways to turn ideas into something impactful and exciting.
-  </p>
+  <div class="grid gap-8 md:grid-cols-[1fr_2fr] items-start mb-8">
+    <div class="frame photo-frame">
+      {
+        photo ? (
+          <img src={photo} alt="Photo of David Abundis" />
+        ) : (
+          <div class="photo-placeholder">Photo coming soon</div>
+        )
+      }
+    </div>
 
-  <ul>
-    {skills.map((skill) => <li class="skill">{skill}</li>)}
-  </ul>
+    <div class="flex flex-col gap-8">
+      <div class="frame text-frame">
+        <p>
+          Hi, I’m David Abundis a senior at Texas A&M University–San Antonio
+          studying Computer Science with a focus on cybersecurity. As a
+          first-generation college student, I’m driven by a passion for using
+          technology to create meaningful, real-world impact. I’ve been able to
+          sharpen my skills through hackathons, CTF competitions, and hands-on
+          projects, constantly pushing myself to learn and adapt in the
+          ever-evolving tech landscape.
+        </p>
 
-  <style is:global>
-    h1 {
+        <p>
+          Beyond code, I’m a huge basketball fan (Go Spurs Go), and I love
+          building fun, engaging tools for both casual and diehard fans. Whether
+          it’s cybersecurity, software development, or creative tech projects,
+          I’m always exploring new ways to turn ideas into something impactful
+          and exciting.
+        </p>
+      </div>
+
+      <section>
+        <h2 class="font-minecraft skills-title">Skills</h2>
+        <ul class="skills">
+          {
+            skills.map((skill) => (
+              <li class="skill-card">
+                <img src={skill.icon} alt="" width="40" height="40" />
+                <span class="skill-name">{skill.name}</span>
+                <span class="skill-years">
+                  {skill.years} {skill.years === 1 ? "year" : "years"}
+                </span>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+    </div>
+  </div>
+
+  <style>
+    .about-title {
       color: var(--color-secondary);
       font-size: 3rem;
     }
 
-    ul {
-      list-style: none;
-      padding: 0;
-      margin: 0.5rem 0;
+    /* Shared frame: thick border with a solid offset shadow */
+    .frame {
+      background: var(--color-base-100);
+      border: 4px solid var(--color-secondary);
+      border-radius: 0.5rem;
+      box-shadow: 8px 8px 0 var(--color-primary);
     }
 
-    .skill {
-      display: inline-block;
-      background-color: var(--color-primary);
-      color: var(--color-primary-content);
-      padding: 0.5rem 1rem;
-      margin: 0.25rem;
-      text-decoration: none;
-      border-radius: 6px;
+    .photo-frame {
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+    }
+
+    .photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .photo-placeholder {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--color-base-300);
+      color: var(--color-secondary);
       font-weight: bold;
+    }
+
+    .text-frame {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .skills-title {
+      color: var(--color-secondary);
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .skills {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 1rem;
+    }
+
+    .skill-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 1rem 0.5rem;
+      background: var(--color-base-100);
+      border: 2px solid var(--color-primary);
+      border-radius: 0.5rem;
+      text-align: center;
+    }
+
+    .skill-card img {
+      width: 40px;
+      height: 40px;
+      margin-bottom: 0.25rem;
+    }
+
+    .skill-name {
+      font-weight: bold;
+      color: var(--color-base-content);
+    }
+
+    .skill-years {
+      font-size: 0.875rem;
+      color: var(--color-secondary);
     }
   </style>
 </BaseLayout>
