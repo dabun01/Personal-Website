@@ -15,7 +15,7 @@ const { id, title, description, image, tags, category } = Astro.props;
   data-filter-card
   data-title={title.toLowerCase()}
   data-tags={[category, ...tags].join("|").toLowerCase()}
-  class="card-xs relative bg-white w-full shadow-xl overflow-hidden transition hover:-translate-y-1 hover:shadow-2xl"
+  class="card-xs relative bg-base-100 w-full shadow-xl overflow-hidden transition hover:-translate-y-1 hover:shadow-2xl"
 >
   <figure class="h-48 overflow-hidden">
     <img
@@ -25,7 +25,7 @@ const { id, title, description, image, tags, category } = Astro.props;
     />
   </figure>
   <div class="card-body">
-    <h2 class="card-title text-2xl text-black">
+    <h2 class="card-title text-2xl text-base-content">
       <a
         href={`/projects/${id}/`}
         class="font-minecraft after:absolute after:inset-0"
@@ -47,7 +47,7 @@ const { id, title, description, image, tags, category } = Astro.props;
           <button
             type="button"
             data-tag-filter={tag}
-            class="badge relative z-10 cursor-pointer bg-gray-200 border-gray-300 text-black hover:bg-gray-300"
+            class="badge relative z-10 cursor-pointer tag-pill"
             title={`Show projects using ${tag}`}
           >
             {tag}

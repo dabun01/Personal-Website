@@ -44,7 +44,7 @@ const tagLink = (tag: string) => `/?tag=${encodeURIComponent(tag)}`;
       project.tags.map((tag) => (
         <a
           href={tagLink(tag)}
-          class="badge bg-gray-200 border-gray-300 text-black hover:bg-gray-300"
+          class="badge tag-pill"
           title={`Show projects using ${tag}`}
         >
           {tag}

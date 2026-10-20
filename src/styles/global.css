@@ -5,9 +5,23 @@
   themes: false;
 }
 
-/* Site palette: sage green (primary), deep space blue (secondary), black */
+/*
+  Two themes, switched by the earth/water toggle in the nav bar
+  (it sets data-theme="earth" or "water" on <html>).
+
+  How the color roles are used across the site:
+    base-100     cards and frames
+    base-200     page background
+    base-300     tag pills, image band behind project screenshots
+    base-content main text
+    primary      buttons, links, highlights
+    secondary    accent text (page titles, dates) and frame borders
+    neutral      nav bar and footer
+*/
+
+/* Earth (light mode): greens */
 @plugin "daisyui/theme" {
-  name: "portfolio";
+  name: "earth";
   default: true;
   prefersdark: false;
   color-scheme: light;
@@ -17,11 +31,11 @@
   --color-base-content: #020202;
   --color-primary: #678d58;
   --color-primary-content: #020202;
-  --color-secondary: #0d324d;
+  --color-secondary: #2f5a22;
   --color-secondary-content: #ffffff;
   --color-accent: #678d58;
   --color-accent-content: #020202;
-  --color-neutral: #0d324d;
+  --color-neutral: #2f4a28;
   --color-neutral-content: #ffffff;
   --color-info: #0d324d;
   --color-info-content: #ffffff;
@@ -39,6 +53,53 @@
   --border: 1px;
   --depth: 1;
   --noise: 0;
+}
+
+/* Water (dark mode): blues */
+@plugin "daisyui/theme" {
+  name: "water";
+  default: false;
+  prefersdark: true;
+  color-scheme: dark;
+  --color-base-100: #12293d;
+  --color-base-200: #0a1a28;
+  --color-base-300: #1e3d57;
+  --color-base-content: #e3edf5;
+  --color-primary: #5fa8d3;
+  --color-primary-content: #04131f;
+  --color-secondary: #8cc4e8;
+  --color-secondary-content: #04131f;
+  --color-accent: #5fa8d3;
+  --color-accent-content: #04131f;
+  --color-neutral: #0d324d;
+  --color-neutral-content: #e3edf5;
+  --color-info: #5fa8d3;
+  --color-info-content: #04131f;
+  --color-success: #678d58;
+  --color-success-content: #020202;
+  --color-warning: #d9a441;
+  --color-warning-content: #020202;
+  --color-error: #e06c5b;
+  --color-error-content: #020202;
+  --radius-selector: 0.5rem;
+  --radius-field: 0.25rem;
+  --radius-box: 0.5rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
+}
+
+/* Gray-ish pill for skills/tags; follows the theme */
+.tag-pill {
+  background-color: var(--color-base-300);
+  border-color: color-mix(in srgb, var(--color-base-content) 15%, var(--color-base-300));
+  color: var(--color-base-content);
+}
+
+.tag-pill:hover {
+  background-color: color-mix(in srgb, var(--color-base-content) 12%, var(--color-base-300));
 }
 
 
@@ -168,7 +229,7 @@ h1 {
   display: flex;
   align-items: center;
   padding: 0.4rem;
-  color: var(--color-secondary-content);
+  color: var(--color-neutral-content);
   text-decoration: none;
   transition: color 0.15s;
 }
@@ -202,8 +263,8 @@ main {
   width: 100%;
   margin-top: auto;
   padding: 1.5rem 1rem 1rem;
-  background-color: var(--color-secondary);
-  color: var(--color-secondary-content);
+  background-color: var(--color-neutral);
+  color: var(--color-neutral-content);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -222,8 +283,8 @@ main {
 
 .site-footer-copy {
   margin: 0;
-  /* slightly dimmed white on the blue footer */
-  color: color-mix(in srgb, var(--color-secondary-content) 75%, transparent);
+  /* slightly dimmed text on the footer */
+  color: color-mix(in srgb, var(--color-neutral-content) 75%, transparent);
   text-align: center;
 }
 

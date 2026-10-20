@@ -14,10 +14,10 @@ const date = new Date(pubDate).toISOString().slice(0, 10);
   data-filter-card
   data-title={title.toLowerCase()}
   data-tags={tags.join("|").toLowerCase()}
-  class="relative flex flex-col sm:flex-row sm:items-center gap-4 bg-white rounded-lg shadow-md p-6 transition hover:-translate-y-1 hover:shadow-xl"
+  class="relative flex flex-col sm:flex-row sm:items-center gap-4 bg-base-100 rounded-lg shadow-md p-6 transition hover:-translate-y-1 hover:shadow-xl"
 >
   <div class="flex-1">
-    <h2 class="font-minecraft text-xl text-black">
+    <h2 class="font-minecraft text-xl text-base-content">
       <a href={url} class="after:absolute after:inset-0">{title}</a>
     </h2>
     <time datetime={date} class="block text-sm text-secondary mt-1">{date}</time>
@@ -30,7 +30,7 @@ const date = new Date(pubDate).toISOString().slice(0, 10);
         <button
           type="button"
           data-tag-filter={tag}
-          class="badge badge-lg relative z-10 cursor-pointer bg-gray-200 border-gray-300 text-black hover:bg-gray-300"
+          class="badge badge-lg relative z-10 cursor-pointer tag-pill"
           title={`Show posts tagged ${tag}`}
         >
           {tag}

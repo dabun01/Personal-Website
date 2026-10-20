@@ -25,7 +25,7 @@ const tagLink = (tag: string) => `/blog/?tag=${encodeURIComponent(tag)}`;
             {frontmatter.tags.map((tag: string) => (
                 <a
                     href={tagLink(tag)}
-                    class="badge badge-lg bg-gray-200 border-gray-300 text-black hover:bg-gray-300"
+                    class="badge badge-lg tag-pill"
                     title={`Show posts tagged ${tag}`}
                 >
                     {tag}
@@ -123,8 +123,8 @@ const tagLink = (tag: string) => `/blog/?tag=${encodeURIComponent(tag)}`;
   }
 
   .post-body :global(pre) {
-    background: var(--color-secondary);
-    color: var(--color-secondary-content);
+    background: var(--color-neutral);
+    color: var(--color-neutral-content);
     padding: 1rem;
     border-radius: 0.5rem;
     overflow-x: auto;

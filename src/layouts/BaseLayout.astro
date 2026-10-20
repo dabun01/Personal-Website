@@ -14,6 +14,22 @@ const { pageTitle, hideTitle = false } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
     <title>{pageTitle}</title>
+    <!--
+      Pick the theme before the page draws, so it doesn't flash the wrong colors:
+      use the saved choice, otherwise follow the device's dark mode setting.
+    -->
+    <script is:inline>
+      (function () {
+        var theme;
+        try {
+          theme = localStorage.getItem("theme");
+        } catch (e) {}
+        if (theme !== "earth" && theme !== "water") {
+          theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "water" : "earth";
+        }
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script>
   </head>
   <body>
     <Header />
