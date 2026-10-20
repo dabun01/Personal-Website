@@ -1,0 +1,95 @@
+---
+// Earth/water switch for light and dark mode.
+// Both symbols are always shown; the one for the current theme is highlighted.
+// Which one is highlighted is pure CSS, based on data-theme on <html>.
+---
+
+<button
+  type="button"
+  id="theme-toggle"
+  class="theme-toggle"
+  aria-label="Switch between light (earth) and dark (water) mode"
+>
+  <!--
+    Icons "Earth Kingdom" and "Water Tribe" by Icons8 (https://icons8.com).
+    They're PNGs used as CSS masks, so they take the theme color (see .icon below).
+  -->
+  <span class="symbol symbol-earth" title="Earth (light mode)">
+    <span class="icon icon-earth" aria-hidden="true"></span>
+  </span>
+  <span class="symbol symbol-water" title="Water (dark mode)">
+    <span class="icon icon-water" aria-hidden="true"></span>
+  </span>
+</button>
+
+<style>
+  .theme-toggle {
+    display: flex;
+    gap: 0.25rem;
+    padding: 0.25rem;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--color-neutral-content) 15%, transparent);
+    cursor: pointer;
+  }
+
+  .symbol {
+    display: flex;
+    width: 2.25rem;
+    height: 2.25rem;
+    padding: 0.35rem;
+    border-radius: 999px;
+    color: var(--color-neutral-content);
+    opacity: 0.5;
+    transition: background-color 0.2s, opacity 0.2s, color 0.2s;
+  }
+
+  /* The PNG's shape cuts out a block filled with the current text color */
+  .icon {
+    width: 100%;
+    height: 100%;
+    background-color: currentColor;
+    -webkit-mask: var(--icon) center / contain no-repeat;
+    mask: var(--icon) center / contain no-repeat;
+  }
+
+  .icon-earth {
+    --icon: url("/icons/earth-kingdom.png");
+  }
+
+  .icon-water {
+    --icon: url("/icons/water-tribe.png");
+  }
+
+  .theme-toggle:hover .symbol {
+    opacity: 0.8;
+  }
+
+  /* Highlight the symbol for the active theme. :global() is needed because
+     data-theme lives on <html>, outside this component. */
+  :global([data-theme="earth"]) .symbol-earth,
+  :global([data-theme="water"]) .symbol-water {
+    opacity: 1;
+    background: #ffffff;
+  }
+
+  :global([data-theme="earth"]) .symbol-earth {
+    color: #3d7a2a;
+  }
+
+  :global([data-theme="water"]) .symbol-water {
+    color: #1d3f8f;
+  }
+</style>
+
+<script>
+  const toggle = document.getElementById("theme-toggle")!;
+
+  toggle.addEventListener("click", () => {
+    const html = document.documentElement;
+    const next = html.dataset.theme === "water" ? "earth" : "water";
+    html.dataset.theme = next;
+    try {
+      localStorage.setItem("theme", next); // remember the choice for next visit
+    } catch {}
+  });
+</script>

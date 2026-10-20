@@ -3,7 +3,7 @@
 // entry is a complete class string (no building class names from variables).
 const categoryColors: Record<string, string> = {
   WEB: "bg-[#678d58] border-[#678d58] text-black",
-  MOBILE: "bg-[#0d324d] border-[#0d324d] text-white",
+  MOBILE: "bg-[#1f6fa8] border-[#1f6fa8] text-white",
   "FULL STACK": "bg-[#d9a441] border-[#d9a441] text-black",
   DESKTOP: "bg-[#b5573b] border-[#b5573b] text-white",
 };

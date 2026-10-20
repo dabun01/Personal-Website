@@ -1,16 +1,50 @@
 ---
 import "../styles/global.css";
+import ThemeToggle from "./ThemeToggle.astro";
+
+const links = [
+  { href: "/", label: "Projects" },
+  { href: "/about/", label: "About" },
+  { href: "/blog/", label: "Blog" },
+];
 ---
 
-<div class="navbar w-full bg-secondary text-secondary-content shadow-sm">
-  <div class="flex-1">
-    <a href="/landing/" class="btn btn-ghost font-minecraft text-xl">David Abundis</a>
+<!--
+  navbar-start / navbar-center / navbar-end keep the toggle centered.
+  On phones (below sm) there isn't room for that, so the name takes the free
+  space (flex-1) and the toggle sits next to the menu button instead.
+-->
+<div class="navbar w-full bg-neutral text-neutral-content shadow-sm">
+  <div class="navbar-start w-auto flex-1 sm:w-1/2 sm:flex-none">
+    <a href="/landing/" class="btn btn-ghost font-minecraft text-lg sm:text-xl px-2 sm:px-4">
+      David Abundis
+    </a>
   </div>
-  <div class="flex-none">
-    <ul class="menu menu-horizontal px-1">
-      <li><a href="/">Projects</a></li>
-      <li><a href="/about/">About</a></li>
-      <li><a href="/blog/">Blog</a></li>
+  <div class="navbar-center">
+    <ThemeToggle />
+  </div>
+  <div class="navbar-end w-auto sm:w-1/2">
+    <!-- Medium screens and up: links in a row -->
+    <ul class="menu menu-horizontal px-1 hidden md:flex font-minecraft">
+      {links.map((link) => <li><a href={link.href}>{link.label}</a></li>)}
     </ul>
+
+    <!--
+      Small screens: menu button with a dropdown. daisyUI's dropdown opens
+      while the button (or the list) has focus, and closes when you tap elsewhere.
+    -->
+    <div class="dropdown dropdown-end md:hidden">
+      <div tabindex="0" role="button" class="btn btn-ghost btn-square" aria-label="Open menu">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </div>
+      <ul
+        tabindex="0"
+        class="menu dropdown-content font-minecraft bg-neutral text-neutral-content rounded-box z-50 mt-3 w-40 p-2 shadow-lg"
+      >
+        {links.map((link) => <li><a href={link.href}>{link.label}</a></li>)}
+      </ul>
+    </div>
   </div>
 </div>
