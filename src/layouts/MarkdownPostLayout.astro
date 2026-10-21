@@ -7,7 +7,13 @@ const date = new Date(frontmatter.pubDate).toISOString().slice(0, 10);
 // Each tag links back to the blog page with that tag filled into the Tag search box.
 const tagLink = (tag: string) => `/blog/?tag=${encodeURIComponent(tag)}`;
 ---
-<BaseLayout pageTitle={frontmatter.title} hideTitle>
+<BaseLayout
+    pageTitle={frontmatter.title}
+    hideTitle
+    title={`${frontmatter.title} | David Abundis`}
+    description={frontmatter.description}
+    image={frontmatter.image?.url}
+>
     <!-- max-w-[70ch] keeps lines to a comfortable reading length; mx-auto centers the column -->
     <article class="max-w-[70ch] mx-auto py-8">
         <a href="/blog/" class="link link-primary">&larr; Back to blog</a>

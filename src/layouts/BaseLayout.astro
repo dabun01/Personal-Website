@@ -2,8 +2,21 @@
 import "../styles/global.css";
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
+import SEO from "../components/SEO.astro";
 
-const { pageTitle, hideTitle = false } = Astro.props;
+const defaultTitle = "David Abundis | Software Developer & Cybersecurity | San Antonio, TX";
+const defaultDescription =
+  "Portfolio of David Abundis, a CS graduate (TAMU-SA) building full-stack, mobile, and AI-powered apps. Security+ certified.";
+
+// pageTitle: the visible <h1> (unless hideTitle).
+// title / description / image: what search engines and link previews show.
+const {
+  pageTitle,
+  hideTitle = false,
+  title = defaultTitle,
+  description = defaultDescription,
+  image,
+} = Astro.props;
 ---
 
 <html lang="en">
@@ -13,7 +26,7 @@ const { pageTitle, hideTitle = false } = Astro.props;
     <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
-    <title>{pageTitle}</title>
+    <SEO title={title} description={description} image={image} />
     <!--
       Pick the theme before the page draws, so it doesn't flash the wrong colors:
       use the saved choice, otherwise follow the device's dark mode setting.

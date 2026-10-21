@@ -5,10 +5,12 @@ import preact from "@astrojs/preact";
 
 import tailwindcss from "@tailwindcss/vite";
 
+import sitemap from "@astrojs/sitemap";
+
 // https://astro.build/config
 export default defineConfig({
-  site: "https://davidabundis.netlify.app/",
-  integrations: [preact()],
+  site: "https://davidabundis.com",
+  integrations: [preact(), sitemap()],
 
   vite: {
     plugins: [tailwindcss()],
