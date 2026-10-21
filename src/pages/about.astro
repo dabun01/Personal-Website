@@ -4,20 +4,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 const pageTitle = "About Me";
 
-// Put your photo in public/ (e.g. public/about/me.jpg) and set its path here.
-const photo = "";
 
-const identity = {
-  firstname: "David",
-  lastname: "Abundis",
-  occupation: "IT Help Desk Student Worker",
-  location: "San Antonio, Texas",
-  hobbies: ["Web Development", "Design", "Basketball"],
-  favoriteTeams: ["San Antonio Spurs", "Dallas Cowboys"],
-};
+const photo = "/project-images/about-me-img.JPG";
+
 
 // Logos come from Devicon: https://devicon.dev
-// TODO: update `years` with your real experience for each skill.
 const iconBase = "https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons";
 const skills = [
   { name: "HTML", icon: `${iconBase}/html5/html5-original.svg`, years: 5 },
@@ -54,8 +45,8 @@ const skills = [
     <div class="flex flex-col gap-8">
       <div class="frame text-frame">
         <p>
-          Hi, I’m David Abundis a senior at Texas A&M University–San Antonio
-          studying Computer Science with a focus on cybersecurity. As a
+          Hi, I’m David Abundis I graduated from Texas A&M University–San Antonio
+          with a degree in Computer Science with a focus on cybersecurity. As a
           first-generation college student, I’m driven by a passion for using
           technology to create meaningful, real-world impact. I’ve been able to
           sharpen my skills through hackathons, CTF competitions, and hands-on
@@ -108,6 +99,15 @@ const skills = [
     .photo-frame {
       aspect-ratio: 4 / 5;
       overflow: hidden;
+    }
+
+    /* Below md the layout is one column; keep the photo small and centered
+       so the text starts on the first screen. */
+    @media (max-width: 767px) {
+      .photo-frame {
+        width: 20rem;
+        justify-self: center;
+      }
     }
 
     .photo-frame img {
