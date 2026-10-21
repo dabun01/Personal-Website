@@ -1,8 +1,10 @@
 ---
 import "../styles/global.css";
+import { Image } from "astro:assets";
 import { categoryColor } from "../categoryColors";
+import { getImageByName } from "../images";
 
-const { id, title, description, image, tags, category } = Astro.props;
+const { slug, title, description, image, tags, category } = Astro.props;
 ---
 
 <!--
@@ -18,8 +20,12 @@ const { id, title, description, image, tags, category } = Astro.props;
   class="card-xs relative bg-base-100 w-full shadow-xl overflow-hidden transition hover:-translate-y-1 hover:shadow-2xl"
 >
   <figure class="h-48 overflow-hidden">
-    <img
-      src={image}
+    <!-- Astro makes 400px and 800px WebP versions; the browser picks one for the card size -->
+    <Image
+      src={getImageByName(image)}
+      width={800}
+      widths={[400, 800]}
+      sizes="(min-width: 1024px) 400px, (min-width: 640px) 50vw, 100vw"
       class="w-full h-full object-cover object-top"
       alt={title}
     />
@@ -27,7 +33,7 @@ const { id, title, description, image, tags, category } = Astro.props;
   <div class="card-body">
     <h2 class="card-title text-2xl text-base-content">
       <a
-        href={`/projects/${id}/`}
+        href={`/projects/${slug}/`}
         class="font-minecraft after:absolute after:inset-0"
       >
         {title}

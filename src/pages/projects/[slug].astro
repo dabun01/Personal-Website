@@ -1,23 +1,26 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import projectInfo from "../../projectInfo.json";
+import { Image } from "astro:assets";
 import { categoryColor } from "../../categoryColors";
+import { getImageByName } from "../../images";
 
 export function getStaticPaths() {
   return projectInfo.map((project) => ({
-    params: { id: project.id },
+    params: { slug: project.slug },
     props: { project },
   }));
 }
 
 const { project } = Astro.props;
+const image = getImageByName(project.image);
 
 // "FULL STACK" -> "Full Stack Project" for the page title
 const categoryLabel = (category: string) =>
   category.toLowerCase().replace(/\b\w/g, (c) => c.toUpperCase()) + " Project";
 
 // Link back to the projects page with this tag pre-filled in the Tag search box.
-const tagLink = (tag: string) => `/?tag=${encodeURIComponent(tag)}`;
+const tagLink = (tag: string) => `/projects/?tag=${encodeURIComponent(tag)}`;
 ---
 
 <BaseLayout
@@ -25,14 +28,18 @@ const tagLink = (tag: string) => `/?tag=${encodeURIComponent(tag)}`;
   hideTitle
   title={`${project.title} – ${categoryLabel(project.category)} | David Abundis`}
   description={project.description}
-  image={project.image}
+  image={image}
 >
   <!-- Full-width band: breaks out of main's max-width and top padding -->
   <div
     class="relative left-1/2 w-screen -translate-x-1/2 -mt-4 bg-base-300 py-8 px-4"
   >
-    <img
-      src={project.image}
+    <Image
+      src={image}
+      width={1600}
+      widths={[800, 1200, 1600]}
+      sizes="(min-width: 1280px) 1200px, 100vw"
+      loading="eager"
       class="mx-auto max-h-144 object-contain rounded-lg shadow-xl"
       alt={project.title}
     />
@@ -40,7 +47,7 @@ const tagLink = (tag: string) => `/?tag=${encodeURIComponent(tag)}`;
 
   <h1 class="font-minecraft">{project.title}</h1>
 
-  <a href="/" class="link link-primary">&larr; Back to projects</a>
+  <a href="/projects/" class="link link-primary">&larr; Back to projects</a>
 
   <div class="flex flex-wrap items-center gap-2 mt-6">
     <a

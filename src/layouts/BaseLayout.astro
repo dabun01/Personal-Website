@@ -27,6 +27,8 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
     <SEO title={title} description={description} image={image} />
+    <!-- Pages can add extra <head> tags with slot="head" (e.g. structured data) -->
+    <slot name="head" />
     <!--
       Pick the theme before the page draws, so it doesn't flash the wrong colors:
       use the saved choice, otherwise follow the device's dark mode setting.

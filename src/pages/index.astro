@@ -1,8 +1,25 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../components/Hero.astro";
+
+// "Person" structured data: tells Google who this site is about and links
+// your name to your GitHub and LinkedIn profiles. https://schema.org/Person
+const person = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "David Abundis",
+  url: "https://davidabundis.com",
+  jobTitle: "Software Developer",
+  alumniOf: "Texas A&M University–San Antonio",
+  address: { "@type": "PostalAddress", addressLocality: "San Antonio", addressRegion: "TX" },
+  sameAs: [
+    "https://github.com/dabun01",
+    "https://www.linkedin.com/in/davidabundis",
+  ],
+};
 ---
 
 <BaseLayout>
+  <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify(person)} />
   <Hero />
 </BaseLayout>

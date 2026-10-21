@@ -1,11 +1,10 @@
 ---
 import "../styles/global.css";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
+import photo from "../assets/images/about-me-img.jpg";
 
 const pageTitle = "About Me";
-
-
-const photo = "/project-images/about-me-img.JPG";
 
 
 // Logos come from Devicon: https://devicon.dev
@@ -40,7 +39,14 @@ const skills = [
     <div class="frame photo-frame">
       {
         photo ? (
-          <img src={photo} alt="Photo of David Abundis" />
+          <Image
+            src={photo}
+            width={640}
+            widths={[320, 640]}
+            sizes="(min-width: 768px) 400px, 160px"
+            loading="eager"
+            alt="Photo of David Abundis"
+          />
         ) : (
           <div class="photo-placeholder">Photo coming soon</div>
         )

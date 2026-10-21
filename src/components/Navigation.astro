@@ -3,7 +3,7 @@ import "../styles/global.css";
 import ThemeToggle from "./ThemeToggle.astro";
 
 const links = [
-  { href: "/", label: "Projects" },
+  { href: "/projects/", label: "Projects" },
   { href: "/about/", label: "About" },
   { href: "/blog/", label: "Blog" },
 ];
@@ -17,7 +17,7 @@ const links = [
 -->
 <div class="navbar w-full bg-neutral text-neutral-content shadow-sm grid grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] gap-2">
   <div class="flex justify-start min-w-0">
-    <a href="/landing/" class="btn btn-ghost font-minecraft text-sm min-[400px]:text-base sm:text-xl px-1 sm:px-4 whitespace-nowrap" aria-label="David Abundis">
+    <a href="/" class="btn btn-ghost font-minecraft text-sm min-[400px]:text-base sm:text-xl px-1 sm:px-4 whitespace-nowrap" aria-label="David Abundis">
       <!-- Initials on very narrow phones (under 360px), full name otherwise -->
       <span class="text-base min-[360px]:hidden">DA</span>
       <span class="hidden min-[360px]:inline">David Abundis</span>
