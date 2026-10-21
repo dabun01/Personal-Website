@@ -1,34 +1,8 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import ProjectCard from "../components/ProjectCard.astro";
-import SearchFilters from "../components/SearchFilters.astro";
-import projectInfo from "../projectInfo.json";
-
-const pageTitle = "My Projects";
-const allTags = [
-  ...new Set(projectInfo.flatMap((project) => [project.category, ...project.tags])),
-].sort();
+import Hero from "../components/Hero.astro";
 ---
 
-<BaseLayout
-  pageTitle={pageTitle}
-  hideTitle
-  title="Projects | David Abundis"
-  description="Projects by David Abundis: full-stack web apps, mobile apps, and AI-powered tools built with React, TypeScript, Python, and more."
->
-  <h1 class="font-minecraft">{pageTitle}</h1>
-
-  <SearchFilters
-    tags={allTags}
-    namePlaceholder="Search projects by name"
-    tagPlaceholder="Filter by tag (e.g. Python)"
-  />
-
-  <div class="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-    {projectInfo.map((project) => <ProjectCard {...project} />)}
-  </div>
-
-  <p id="no-results" class="text-center text-lg mt-8" hidden>
-    No projects match your search.
-  </p>
+<BaseLayout>
+  <Hero />
 </BaseLayout>
