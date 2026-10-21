@@ -10,20 +10,23 @@ const links = [
 ---
 
 <!--
-  navbar-start / navbar-center / navbar-end keep the toggle centered.
-  On phones (below sm) there isn't room for that, so the name takes the free
-  space (flex-1) and the toggle sits next to the menu button instead.
+  Three-column grid: the two outer columns are always equal width (1fr each),
+  so the middle column (the theme toggle) sits exactly in the center on every
+  screen size. minmax(0, 1fr) lets the outer columns shrink instead of pushing
+  the toggle off-center. On phones the name and toggle are smaller so they fit.
 -->
-<div class="navbar w-full bg-neutral text-neutral-content shadow-sm">
-  <div class="navbar-start w-auto flex-1 sm:w-1/2 sm:flex-none">
-    <a href="/landing/" class="btn btn-ghost font-minecraft text-lg sm:text-xl px-2 sm:px-4">
-      David Abundis
+<div class="navbar w-full bg-neutral text-neutral-content shadow-sm grid grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] gap-2">
+  <div class="flex justify-start min-w-0">
+    <a href="/landing/" class="btn btn-ghost font-minecraft text-sm min-[400px]:text-base sm:text-xl px-1 sm:px-4 whitespace-nowrap" aria-label="David Abundis">
+      <!-- Initials on very narrow phones (under 360px), full name otherwise -->
+      <span class="text-base min-[360px]:hidden">DA</span>
+      <span class="hidden min-[360px]:inline">David Abundis</span>
     </a>
   </div>
-  <div class="navbar-center">
+  <div class="flex justify-center">
     <ThemeToggle />
   </div>
-  <div class="navbar-end w-auto sm:w-1/2">
+  <div class="flex justify-end min-w-0">
     <!-- Medium screens and up: links in a row -->
     <ul class="menu menu-horizontal px-1 hidden md:flex font-minecraft">
       {links.map((link) => <li><a href={link.href}>{link.label}</a></li>)}

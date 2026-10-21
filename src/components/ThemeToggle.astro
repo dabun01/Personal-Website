@@ -43,6 +43,15 @@
     transition: background-color 0.2s, opacity 0.2s, color 0.2s;
   }
 
+  /* Slightly smaller on phones so it fits between the name and menu button */
+  @media (max-width: 639px) {
+    .symbol {
+      width: 1.875rem;
+      height: 1.875rem;
+      padding: 0.3rem;
+    }
+  }
+
   /* The PNG's shape cuts out a block filled with the current text color */
   .icon {
     width: 100%;
